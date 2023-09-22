@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>LanGuard 설정</title>
+    <style>
+        label {
+            display: block;
+            margin-bottom: 4px;
+        }
+    </style>
+</head>
+
+<body>
+    <img src="languard-logo-long.png" alt="LanGuard" width="240" style="padding-bottom:8px;">
+    <label>
+        경고 자동 닫힘 시간 (초):
+        <input type="number" id="closeTime" value="5">
+    </label>
+    <label>
+        부적절한 컨텐츠 필터링
+        <input type="checkbox" id="filteringEnabled" checked>
+    </label>
+    <label>
+        성적 컨텐츠 필터링
+        <input type="checkbox" id="nsfwEnabled" checked>
+    </label>
+    <button id="saveButton">저장</button>
+    <script src="popup.js"></script>
+</body>
+
+</html>
