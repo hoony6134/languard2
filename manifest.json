@@ -4,7 +4,7 @@
     "storage"
   ],
   "name": "LanGuard",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "욕설 및 비속어 입력을 자동으로 감지하고, 필터링된 단어로 표시하는 프로그램입니다.",
   "icons": {
     "16": "icons/icon16.png",

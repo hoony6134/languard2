@@ -68,6 +68,7 @@ function displayWarning(badWord) {
       <div style="font-weight: bold; margin-bottom: 4px;">⚠️ 경고</div>
       <div style="margin-bottom: 4px;">
         입력한 텍스트에 부적절한 단어(<span style="background-color: orange; font-weight: bold;">${badWord}</span>)가 포함되어 있습니다. 수정해 주세요.
+        <div style="font-size: 12px; font-weight: semi-bold; margin-top: 4px;">대한민국 『형법』 제 311조에 따르면, 공연히 사람을 모욕한 자는 1년 이하의 징역이나 금고 또는 200만 원 이하의 벌금에 처해집니다. </div>
       </div>
     </div>
   `;
@@ -122,7 +123,8 @@ function displayNSFWWarning(badWord) {
     <div style="padding: 0;">
       <div style="font-weight: bold; margin-bottom: 4px;">⚠️ 성적인 단어/NSFW 감지</div>
       <div style="margin-bottom: 4px;">
-        입력한 텍스트에 성적인 단어/NSFW(<span style="background-color: orange; font-weight: bold;">${badWord}</span>)가 포함되어 있습니다. 수정해 주세요.
+        입력한 텍스트에 성적인 단어(<span style="background-color: orange; font-weight: bold;">${badWord}</span>)가 포함되어 있습니다. 수정해 주세요.<br>
+        <div style="font-size: 12px; font-weight: semi-bold; margin-top: 4px;">대한민국 『성폭력범죄의 처벌 등에 관한 특례법』 제 13조에 따르면, 통신매체를 통한 성적 수치심이나 혐오감을 일으키는 글을 상대방에게 도달하게 한 사람은 2년 이하의 징역 또는 500만원 이하의 벌금형에 처해집니다.</div>
       </div>
     </div>
   `;
@@ -133,7 +135,7 @@ function displayNSFWWarning(badWord) {
 
   // Remove the tooltip after a certain duration (e.g., 5 seconds)
   chrome.storage.sync.get(["closeTime"], function (data) {
-    const closeTime = data.closeTime * 1000 || 5000; // Default to 5 seconds
+    const closeTime = data.closeTime * 1000 || 10000; // Default to 10 seconds
 
     // Remove the tooltip after the specified duration
     setTimeout(() => {
@@ -179,7 +181,8 @@ function displayRacismWarning(badWord) {
       <div style="font-weight: bold; margin-bottom: 4px;">⛔️ 인종차별 경고</div>
       <div style="margin-bottom: 4px;">
         입력한 텍스트에 인종 차별적인 단어(<span style="background-color: orange; font-weight: bold;">${badWord}</span>)가 포함되어 있습니다. 수정해 주세요.
-      </div>
+        <div style="font-size: 12px; font-weight: semi-bold; margin-top: 4px;">UN 『모든 형태의 인종차별 철폐에 관한 국제협약(International Convention on the Elimination of All Forms of Racial Discrimination)』을 비롯한 각종 국제 협약 및 미국 차별금지법 등에 의해 인종차별적인 발언은 부적절하며, 경중에 따라 처벌될 수 있습니다.</div>
+        </div>
     </div>
   `;
 
@@ -286,7 +289,7 @@ function sanitizeMessage(inputElement) {
       const isNsfwEnabled = data.nsfwEnabled !== false; // Default to true
       if (!isNsfwEnabled) {
         const badWord = message.match(new RegExp(`(${Object.keys(wordMap).join('|')})`, 'i'))[0];
-        inputElement.style.border = "2px solid orange";
+        inputElement.style.border = "2px dashed red";
         displayNSFWWarning(badWord);
       }
     });
