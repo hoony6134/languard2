@@ -18,7 +18,6 @@ function checkMessage(message) {
     if (word in wordMap) {
       sanitizedWord = wordMap[word];
       hasWarning = true;
-      // set isRacism to true if the word is racism
       isRacism = sanitizedWord === "[인종차별적 단어 감지]";
       isParentsAbuse = sanitizedWord === "[패드립 감지]";
       isNSFW = sanitizedWord === "[성적인 단어 감지]";
@@ -239,6 +238,7 @@ function displayParentsAbuseWarning(badWord) {
       <div style="font-weight: bold; margin-bottom: 4px;">⛔️ 패드립 경고</div>
       <div style="margin-bottom: 4px;">
         입력한 텍스트에 부모님에 대한 욕설/패드립(<span style="background-color: orange; font-weight: bold;">${badWord}</span>)이 포함되어 있습니다. 수정해 주세요.
+        <div style="font-size: 12px; font-weight: semi-bold; margin-top: 4px;">대한민국 『정보통신망 이용촉진 및 정보보호 등에 관한 법률』 제 70조 제 1항과 2항에 의하면, 사람을 비방할 목적으로 정보통신망을 통하여 공공연하게 사실이나 거짓된 사실을 드러내어 다른 사람의 명예를 훼손한 자는 7년 이하의 징역, 10년 이하의 자격정지 또는 5천만원 이하의 벌금에 처하게 됩니다. </div>
       </div>
     </div>
   `;
